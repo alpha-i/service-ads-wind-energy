@@ -1,0 +1,134 @@
+windfarm_configuration:
+  name: Acme Windfarm
+  turbines:
+    1:
+      name: "WT01"
+      description: "Turbine WT01"
+    2:
+      name: "WT02"
+      description: "Turbine WT02"
+    3:
+      name: "WT03"
+      description: "Turbine WT03"
+    4:
+      name: "WT04"
+      description: "Turbine WT04"
+    5:
+      name: "WT05"
+      description: "Turbine WT05"
+    6:
+      name: "WT06"
+      description: "Turbine WT06"
+    7:
+      name: "WT07"
+      description: "Turbine WT07"
+    8:
+      name: "WT08"
+      description: "Turbine WT08"
+    9:
+      name: "WT09"
+      description: "Turbine WT09"
+    10:
+      name: "WT10"
+      description: "Turbine WT10"
+    11:
+      name: "WT11"
+      description: "Turbine WT11"
+    12:
+      name: "WT12"
+      description: "Turbine WT12"
+    13:
+      name: "WT13"
+      description: "Turbine WT13"
+    14:
+      name: "WT14"
+      description: "Turbine WT14"
+    15:
+      name: "WT15"
+      description: "Turbine WT15"
+    16:
+      name: "WT16"
+      description: "Turbine WT16"
+    17:
+      name: "WT17"
+      description: "Turbine WT17"
+    18:
+      name: "WT18"
+      description: "Turbine WT18"
+    19:
+      name: "WT19"
+      description: "Turbine WT19"
+    20:
+      name: "WT20"
+      description: "Turbine WT20"
+    21:
+      name: "WT21"
+      description: "Turbine WT21"
+    22:
+      name: "WT22"
+      description: "Turbine WT22"
+    23:
+      name: "WT23"
+      description: "Turbine WT23"
+    24:
+      name: "WT24"
+      description: "Turbine WT24"
+    25:
+      name: "WT25"
+      description: "Turbine WT25"
+    26:
+      name: "WT26"
+      description: "Turbine WT26"
+    27:
+      name: "WT27"
+      description: "Turbine WT27"
+  variables:
+    drive_train:
+      name: Drive Train
+      variables:
+      - Generator RPM
+      - Generator Energy Output
+      - Generator Bearing Temperature (non-drive end)
+      - Generator Bearing Temperature (drive end)
+      - High Speed Bearing Temperature
+      - Hydraulic Pressure
+      - IMS Gear Bearing 1 Temperature
+      - IMS Gear Bearing 2 Temperature
+    nacelle_yaw:
+      name: Nacelle\Yaw
+      variables:
+      - Nacelle Direction
+      - Nacelle Temperature
+      - YAW Position
+    power_characteristic:
+      name: Power Characteristic
+      variables:
+      - Current L1
+      - Current L2
+      - Current L3
+      - Voltage L1
+      - Voltage L2
+      - Voltage L3
+      - Active Power
+      - Reactive Power
+      - Power Factor
+    rotor_hub:
+      name: Rotor Hub
+      variables:
+      - Blade A - Pitch Angle
+      - Blade B - Pitch Angle
+      - Blade C - Pitch Angle
+      - Main shaft RPM
+    tower:
+      name: Tower
+      variables:
+      - Tower Vibration
+      - Tower Temperature
+      - Tower Humidity
+    turbine_performances:
+      name: Turbine Performances
+      variables:
+      - Active Energy Export
+      - Active Energy Import
+      - Reactive Energy Export
+      - ReActive Energy Import

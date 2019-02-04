@@ -1,0 +1,97 @@
+{% extends "layout/main.html" %}
+{% import 'macros/macros.html' as general_macros %}
+
+{% block page_title %}Wind Farm{% endblock %}
+
+{% block page_header %}
+    <h1>
+        Windfarm
+        <small></small>
+    </h1>
+{% endblock %}
+{% block breadcrumb_items %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <h3 class="box-header with-border">Overview of windfarm <strong>{{ windfarm.name }}</strong></h3>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="box-body">
+                                {{ general_macros.healthscore_box(windfarm_healthscore, 'Windfarm Health') }}
+                            </div>
+                            <canvas id="bar-chart" width="600" height="200"></canvas>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>Turbines</h2>
+                            <table id="turbine_overview" class="display" width="100%"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_js %}
+    {{ super() }}
+
+    <script>
+        $(document).ready(function () {
+            new Chart(document.getElementById("bar-chart"), {
+                type: 'bar',
+                data: {
+                    labels: ["100-90", "90-80", "80-70", "70-60", "60-50", "50-40", "40-30", "30-20", "20-10", "10-0"],
+                    datasets: [
+                        {
+                            label: "Number of turbines in the group",
+                            backgroundColor: "#3e95cd",
+                            data: {{ scores }}
+                        }
+                    ]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: true,
+                        text: 'Health score distribution'
+                    },
+                    scales: {
+                        yAxes: [{
+                            display: true,
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 10,
+                                stepValue: 1,
+                                max: 8
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#turbine_overview').DataTable({
+                data: {{ turbine_dataset.data|safe }},
+                pageLength: 50,
+                columns: [
+                    {% for column_name in turbine_dataset.columns %}
+                        {title: '{{ column_name }}'},
+                    {% endfor %}
+                ],
+                searching: false
+            });
+        });
+
+    </script>
+
+{% endblock %}

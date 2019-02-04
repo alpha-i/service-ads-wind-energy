@@ -1,0 +1,1403 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1534519090599,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {
+        "Faulty": "#bf1b00"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "wf_scada_hist",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 16,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Faulty",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "IsFaulty",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "IsFaulty:1",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "Annual Service",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "ActionsPerformed:\"Annual Service\"",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 10,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total number of unavailable turbines",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "wf_scada_hist",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 12,
+        "y": 0
+      },
+      "id": 18,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "IsFaulty",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "IsFaulty:1",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": "",
+      "title": "Currently Faulty",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "datasource": "wf_scada_hist",
+      "gridPos": {
+        "h": 18,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "id": 21,
+      "links": [],
+      "pconfig": {
+        "layout": {
+          "autosize": false,
+          "font": {
+            "color": "rgb(110,110,110)",
+            "family": "\"Open Sans\", Helvetica, Arial, sans-serif"
+          },
+          "hovermode": "closest",
+          "legend": {
+            "orientation": "v"
+          },
+          "paper_bgcolor": "transparent",
+          "plot_bgcolor": "transparent",
+          "polar": {
+            "angularaxis": {
+              "direction": "counterclockwise",
+              "dtick": 22.5,
+              "rotation": 0
+            },
+            "radialaxis": {
+              "angle": 90,
+              "ticksuffix": " m/s"
+            }
+          },
+          "showlegend": false
+        },
+        "mapping": {
+          "color": "Average Nac_Direction_Avg-SQL-10minAvg",
+          "size": null,
+          "x": "Average Nac_Direction_Avg-SQL-10minAvg",
+          "y": "Average Amb_WindSpeed_Avg-SQL-10minAvg",
+          "z": null
+        },
+        "settings": {
+          "color_option": "ramp",
+          "displayModeBar": false,
+          "marker": {
+            "color": "#33B5E5",
+            "colorscale": "Bluered",
+            "showscale": true,
+            "size": 5,
+            "sizemin": 3,
+            "sizemode": "diameter",
+            "sizeref": 0.2,
+            "symbol": "circle"
+          },
+          "petals": 32,
+          "plot": "scatter",
+          "wind_speed_interval": 2
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "Nac_Direction_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "Amb_WindSpeed_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Nacelle Direction vs Wind Speed",
+      "type": "fatcloud-windrose-panel"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "wf_scada_hist",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 14,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "KPIS_10MIN-SOKTIME",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            }
+          ],
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total SOK Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "wf_scada_hist",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 4,
+        "x": 12,
+        "y": 9
+      },
+      "id": 19,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "IsFaulty",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "ActionsPerformed:\"Annual Service\"",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": "",
+      "title": "Currently in Annual Service",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "wf_scada_hist",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "Amb_WindSpeed_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "1",
+              "id": "3",
+              "meta": {},
+              "pipelineAgg": "1",
+              "settings": {
+                "minimize": false,
+                "model": "simple",
+                "window": 20
+              },
+              "type": "moving_avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Wind Speed",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "wind speed (m/s)",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "Average ActivePower_Avg-SQL-10minAvg": "#7eb26d",
+        "Derivative Average ActivePower_Avg-SQL-10minAvg": "#eab839"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "wf_scada_hist",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 12,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "ActivePower_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "ActivePower_Avg-SQL-10minAvg",
+              "hide": true,
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "1",
+              "id": "3",
+              "meta": {},
+              "pipelineAgg": "1",
+              "settings": {},
+              "type": "derivative"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": -1500,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Active Power",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": "wf_scada_hist",
+      "gridPos": {
+        "h": 14,
+        "w": 8,
+        "x": 0,
+        "y": 27
+      },
+      "hideTimeOverride": false,
+      "id": 8,
+      "links": [],
+      "pconfig": {
+        "layout": {
+          "autosize": false,
+          "dragmode": "lasso",
+          "font": {
+            "color": "#D8D9DA",
+            "family": "\"Open Sans\", Helvetica, Arial, sans-serif"
+          },
+          "hovermode": "closest",
+          "legend": {
+            "orientation": "v"
+          },
+          "margin": {
+            "b": 45,
+            "l": 65,
+            "r": 20,
+            "t": 0
+          },
+          "paper_bgcolor": "rgba(0,0,0,0)",
+          "plot_bgcolor": "#1f1d1d",
+          "scene": {
+            "xaxis": {
+              "title": "X AXIS"
+            },
+            "yaxis": {
+              "title": "Y AXIS"
+            },
+            "zaxis": {
+              "title": "Z AXIS"
+            }
+          },
+          "showlegend": false,
+          "xaxis": {
+            "gridcolor": "#444444",
+            "range": null,
+            "rangemode": "normal",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": false
+          },
+          "yaxis": {
+            "gridcolor": "#444444",
+            "range": null,
+            "rangemode": "normal",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": false
+          }
+        },
+        "mapping": {
+          "color": "@time",
+          "size": null,
+          "x": "Average timestamp",
+          "y": "Average Amb_WindSpeed_Avg-SQL-10minAvg",
+          "z": "Average ActivePower_Avg-SQL-10minAvg"
+        },
+        "settings": {
+          "color_option": "ramp",
+          "displayModeBar": false,
+          "line": {
+            "color": "#005f81",
+            "dash": "solid",
+            "shape": "linear",
+            "width": 6
+          },
+          "marker": {
+            "color": "#e5ac0e",
+            "colorscale": "YIOrRd",
+            "line": {
+              "color": "#DDD",
+              "width": 0
+            },
+            "showscale": false,
+            "size": 5,
+            "sizemin": 3,
+            "sizemode": "diameter",
+            "sizeref": 0.2,
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "type": "scatter3d"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "ActivePower_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine AND IsFaulty:0 AND (NOT ActionsPerformed:\"Annual Service\") AND timestamp:[$last_week_timestamp TO $end_timestamp]",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "Amb_WindSpeed_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine AND IsFaulty:0 AND (NOT ActionsPerformed:\"Annual Service\") AND timestamp:[$last_week_timestamp TO $end_timestamp]",
+          "refId": "B",
+          "timeField": "timestamp"
+        },
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "timestamp",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine AND IsFaulty:0 AND (NOT ActionsPerformed:\"Annual Service\") AND timestamp:[$last_week_timestamp TO $end_timestamp]",
+          "refId": "C",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Power Curve evolution (last two weeks)",
+      "type": "natel-plotly-panel"
+    },
+    {
+      "datasource": "wf_scada_hist",
+      "gridPos": {
+        "h": 14,
+        "w": 16,
+        "x": 8,
+        "y": 27
+      },
+      "hideTimeOverride": false,
+      "id": 7,
+      "links": [],
+      "pconfig": {
+        "layout": {
+          "autosize": false,
+          "dragmode": "lasso",
+          "font": {
+            "color": "#D8D9DA",
+            "family": "\"Open Sans\", Helvetica, Arial, sans-serif"
+          },
+          "hovermode": "closest",
+          "legend": {
+            "orientation": "v"
+          },
+          "margin": {
+            "b": 45,
+            "l": 65,
+            "r": 20,
+            "t": 0
+          },
+          "paper_bgcolor": "rgba(0,0,0,0)",
+          "plot_bgcolor": "#1f1d1d",
+          "scene": {
+            "xaxis": {
+              "title": "X AXIS"
+            },
+            "yaxis": {
+              "title": "Y AXIS"
+            },
+            "zaxis": {
+              "title": "Z AXIS"
+            }
+          },
+          "showlegend": false,
+          "xaxis": {
+            "gridcolor": "#444444",
+            "range": null,
+            "rangemode": "normal",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": false
+          },
+          "yaxis": {
+            "gridcolor": "#444444",
+            "range": null,
+            "rangemode": "normal",
+            "showgrid": true,
+            "type": "linear",
+            "zeroline": false
+          }
+        },
+        "mapping": {
+          "color": "@index",
+          "size": "",
+          "x": "Average Amb_WindSpeed_Avg-SQL-10minAvg",
+          "y": "Average ActivePower_Avg-SQL-10minAvg",
+          "z": "2016-01-10T23:40:00.000Z"
+        },
+        "settings": {
+          "color_option": "solid",
+          "displayModeBar": false,
+          "line": {
+            "color": "#005f81",
+            "dash": "solid",
+            "shape": "linear",
+            "width": 6
+          },
+          "marker": {
+            "color": "#e5ac0e",
+            "colorscale": "YIOrRd",
+            "line": {
+              "color": "#DDD",
+              "width": 0
+            },
+            "showscale": false,
+            "size": 15,
+            "sizemin": 3,
+            "sizemode": "diameter",
+            "sizeref": 0.2,
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "type": "scatter"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "field": "ActivePower_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine AND IsFaulty:0 AND (NOT ActionsPerformed:\"Annual Service\") AND timestamp:[$start_timestamp TO $end_timestamp]",
+          "refId": "A",
+          "timeField": "timestamp"
+        },
+        {
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "10m",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "Amb_WindSpeed_Avg-SQL-10minAvg",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "wind_turbine:$wind_turbine AND IsFaulty:0 AND (NOT ActionsPerformed:\"Annual Service\") AND timestamp:[$start_timestamp TO $end_timestamp]",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Power Curve (last 7 days)",
+      "type": "natel-plotly-panel"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "wf_scada_hist",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": false,
+        "name": "wind_turbine",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"wind_turbine\"}",
+        "refresh": 1,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "wf_scada_hist",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "start_timestamp",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"timestamp\", \"query\":\"timestamp:[2016-01-01T00:00:00 TO *]\"}",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "wf_scada_hist",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "end_timestamp",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"timestamp\", \"query\":\"timestamp:[2016-01-08T00:00:00 TO *]\"}",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "wf_scada_hist",
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "last_week_timestamp",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\": \"timestamp\", \"query\":\"timestamp:[2015-12-25T00:00:00 TO *]\"}",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "2015-12-28T00:00:00.000Z",
+    "to": "2016-01-11T00:00:00.000Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Imported Giacomo Exploration",
+  "uid": "oMTGIzpik",
+  "version": 21,
+  
+  "templating": {
+    "list": [{
+      "allValue": null,
+      "current": {
+        "selected": false,
+        "tags": [],
+        "text": "8",
+        "value": "8"
+      },
+      "datasource": "wf_scada_hist",
+      "hide": 0,
+      "includeAll": true,
+      "label": null,
+      "multi": false,
+      "name": "wind_turbine",
+      "options": [],
+      "query": "{\"find\": \"terms\", \"field\": \"wind_turbine\"}",
+      "refresh": 1,
+      "regex": "",
+      "sort": 0,
+      "tagValuesQuery": "",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": false
+    }, {
+      "allValue": null,
+      "current": {
+        "selected": true,
+        "text": "2016-01-04T00:00:00.000Z",
+        "value": "1451865600000"
+      },
+      "datasource": "wf_scada_hist",
+      "hide": 0,
+      "includeAll": false,
+      "label": null,
+      "multi": false,
+      "name": "start_timestamp",
+      "options": [],
+      "query": "{\"find\": \"terms\", \"field\": \"timestamp\", \"query\":\"timestamp:[2016-01-01T00:00:00 TO *]\"}",
+      "refresh": 1,
+      "regex": "",
+      "sort": 1,
+      "tagValuesQuery": "",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": false
+    }, {
+      "allValue": null,
+      "current": {
+        "selected": true,
+        "text": "2016-01-11T00:00:00.000Z",
+        "value": "1452470400000"
+      },
+      "datasource": "wf_scada_hist",
+      "hide": 0,
+      "includeAll": false,
+      "label": null,
+      "multi": false,
+      "name": "end_timestamp",
+      "options": [],
+      "query": "{\"find\": \"terms\", \"field\": \"timestamp\", \"query\":\"timestamp:[2016-01-08T00:00:00 TO *]\"}",
+      "refresh": 1,
+      "regex": "",
+      "sort": 1,
+      "tagValuesQuery": "",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": false
+    }, {
+      "allValue": null,
+      "current": {
+        "selected": true,
+        "text": "2015-12-28T00:00:00.000Z",
+        "value": "1451260800000"
+      },
+      "datasource": "wf_scada_hist",
+      "hide": 0,
+      "includeAll": false,
+      "label": null,
+      "multi": false,
+      "name": "last_week_timestamp",
+      "options": [],
+      "query": "{\"find\": \"terms\", \"field\": \"timestamp\", \"query\":\"timestamp:[2015-12-25T00:00:00 TO *]\"}",
+      "refresh": 1,
+      "regex": "",
+      "sort": 1,
+      "tagValuesQuery": "",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": false
+    }]
+  }
+}

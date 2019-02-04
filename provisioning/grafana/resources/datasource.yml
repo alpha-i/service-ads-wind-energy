@@ -1,0 +1,31 @@
+
+elasticsearch:
+  history:
+    name: "wf_scada_hist"
+    type: "elasticsearch"
+    access: "proxy"
+    url: "http://51.144.39.71:9200"
+    password: ""
+    user: ""
+    database: "wf_scada_hist"
+    basicAuth: false
+    isDefault: true
+    jsonData:
+      timeField: "timestamp"
+      "esVersion": 5
+
+  predictions:
+      name: "wf_scada_hist"
+      type: "elasticsearch"
+      access: "proxy"
+      url: "http://51.144.39.71:9200"
+      password: ""
+      user: ""
+      database: "wf_model_predictions"
+      basicAuth: false
+      isDefault: true
+      jsonData:
+        timeField: "timestamp"
+        "esVersion": 5
+
+

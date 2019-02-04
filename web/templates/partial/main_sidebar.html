@@ -1,0 +1,17 @@
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Menu</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li><a href="{{ url_for('windfarm.index') }}"><i class="fa fa-object-group"></i> <span>Wind Farm</span></a></li>
+        <li><a href="{{ url_for('data_exploration.index') }}"><i class="fa fa-dashboard"></i> <span>Data exploration</span></a></li>
+        <li><a href="{{ url_for('alerts.index') }}"><i class="fa fa-warning"></i> <span>Alerts</span></a></li>
+        <li><a href="{{ url_for('maintenance.index') }}"><i class="fa fa-wrench"></i> <span>Maintenance Log</span></a></li>
+        <li><a href="{{ url_for('settings.index') }}"><i class="fa fa-sliders"></i> <span>Settings</span></a></li>
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>

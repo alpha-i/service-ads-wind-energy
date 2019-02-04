@@ -1,0 +1,69 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      - RABBITMQ_DEFAULT_PASS=password
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_NODE_PORT_NUMBER=5672
+      - RABBITMQ_DEFAULT_VHOST=/
+
+  database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=anomaly
+
+  ads_worker:
+    build:
+      context: .
+      dockerfile: docker/ads/Dockerfile.worker
+    command: celery -A celery_worker.celery worker -E --loglevel=debug --concurrency=1 --max-tasks-per-child=1 --without-gossip --without-mingle --without-heartbeat
+    depends_on:
+      - database
+      - rabbitmq
+    volumes:
+      - ./environments/docker.env:/home/environments/docker.env
+      - .:/home
+
+  ads_web:
+    build:
+      context: .
+      dockerfile: docker/ads/Dockerfile.server
+    command: python application.py
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+      - rabbitmq
+      - ads_worker
+    volumes:
+      - .:/home
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_INSTALL_PLUGINS=natel-plotly-panel,fatcloud-windrose-panel
+      - GF_SECURITY_ADMIN_PASSWORD=password
+
+  ads_elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
+    environment:
+    - cluster.name=docker-cluster
+    - bootstrap.memory_lock=true
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+    - 9200:9200

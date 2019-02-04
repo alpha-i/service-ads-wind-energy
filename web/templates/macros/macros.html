@@ -1,0 +1,61 @@
+{% macro format_datetime(datetime) -%}
+    {{ datetime.strftime('%Y-%m-%d %H:%M:%S') }}
+{%- endmacro %}
+
+{% macro format_date(datetime) -%}
+    {{ datetime.strftime('%Y-%m-%d') }}
+{%- endmacro %}
+
+{% macro get_task_status_icon(status) -%}
+    {%- set icon_class = 'fa-gear fa-spin text-light-blue' -%}
+    {% if status == 'SUCCESSFUL' %}
+        {%- set icon_class = 'fa-check-circle text-green' -%}
+    {%- elif status == 'QUEUED' -%}
+        {%- set icon_class = 'fa-hourglass text-blue' -%}
+    {%- elif status == 'FAILED' -%}
+        {%- set icon_class = 'fa-warning text-yellow' -%}
+    {%- endif -%}
+    {{ icon_class }}
+{%- endmacro -%}
+
+
+
+{% macro print_flash_messages(dismissible=True) %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category|default('info') }} {% if dismissible %}alert-dismissible{% endif %}">
+                    {% if dismissible %}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                        </button>{% endif %}
+                    <p>{{ message|safe }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endmacro %}
+
+
+{% macro healthscore_box(healthscore, component_name) %}
+
+    {% if healthscore >= 70 %}
+        {% set status_color = 'green' %}
+    {% elif 40 < healthscore < 70 %}
+        {% set status_color = 'yellow' %}
+    {% else %}
+        {% set status_color = 'red' %}
+    {% endif %}
+    <div class="small-box bg-{{ status_color }}">
+        <div class="inner">
+            <h3>{{ healthscore|round(2) }}</h3>
+            {{ component_name }}
+        </div>
+        <div class="icon">
+            <i class="fa fa-heartbeat"></i>
+        </div>
+        <a href="#" class="small-box-footer">
+            &nbsp;
+        </a>
+    </div>
+
+{% endmacro %}

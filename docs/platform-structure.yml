@@ -1,0 +1,131 @@
+
+root:
+  windfarm:
+    component_on_page:
+      graph:
+        description: distribution of latest turbine health scores values over fixed size binning
+        needs: health score distribution function
+        timeframe: health_score_window
+      table:
+        description: list of turbine showing the meta information
+        meta:
+          - column_id
+          - health score
+          - age
+          - turbine model (brand/code)
+    subpages:
+      turbine_details:
+        component_on_page:
+          graph:
+            description: show the latest turbine health score
+            needs: health score calculation function
+            timeframe: health_score_window
+          image:
+            description: static image of a turbine with components highlighted in different colour
+
+          components:
+            component_details:
+              description: show latest component health score
+              needs: health score calculation function
+              timeframe: health_score_window
+
+
+          estimations:
+            residual_time:
+              description: estimates the residual time before the turbine goes down or need repairs
+              need: function to calculate the esitmation
+              timeframe: health_score_window
+            cost_of_repair:
+              description: the cost of a repair
+              status: not implemented
+
+            downtime:
+              description: estimation of the downtime if the turbine breaks
+              need: function to calculate estimation or function to return average of previous downtimes
+            revenue_loss:
+              description: estimation of the revenue loss if the turbine goes downtime
+              need: function to calculate the amount loss given revenue/Kwh * downtime hours
+            failure_cost:
+              description: cost of the turbine if there's a failure
+              status: not implemented
+
+          KPI:
+            description: all those metrics are not linked to the 'health window'
+            timeframe: whole history
+            updarted: daily
+
+            availability:
+              description: percentage of unavailability of the turbine
+              needs:
+
+            efficiency:
+              description: N/A
+              needs: N/A
+
+            meantime_between_failures:
+              description: average time between isFaulty period
+              needs: function to calculate the average time
+
+          graph:
+            description: generated power (active power vs wind speed)
+            needs: grafana graph
+            timeframe: TBC
+        subpages:
+          technical_report:
+            components_on_page:
+              number:
+                description: health_score of the component of the turbine
+                timeframe:  health_score_window
+              graph:
+                description: grafana graph showing model output over time
+                needs: model output
+                timeframe:  health_score_window
+                
+              turbine_components_output:
+                graph:
+                  description: same as turbine but only for component
+                graph:
+                  description: metric sensor, allow exploration of a single variable which is part of the models and is compared to the previous health_score_window
+                  timeframe: health_score_window 
+
+  alerts:
+    table:
+      description: show latest alerts
+
+  data_navigation:
+    description: container of a grafana dashboard with exploration of the raw data
+    needs: grafana dashboard
+
+  maintenance_log:
+    form:
+      description: allows user to input maintenance notification
+      fields:
+        - start_date
+        - end_date
+        - turbine_number
+        - component
+        - class_of_maintenance [fault|routine service]
+        - note free text
+
+    table:
+      description: list of submitted maintenance works
+
+  settings:
+    form:
+      description: add scada credential to connect to datasource
+      status: to be implemented
+
+    form:
+      description: set threshold from which the platform raises an alert
+      fields:
+        - enable/disable
+        - threshold
+        - email notification on/off
+        - email address(es)
+
+    form:
+      description: set the frequency the pdf report is sent
+      fields:
+        - enable/disabled
+        - frequency
+        - email address(es)

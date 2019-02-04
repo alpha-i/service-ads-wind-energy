@@ -1,0 +1,251 @@
+
+windfarm_configuration:
+  name: Acme Windfarm
+  turbines:
+    1:
+      name: "WT01"
+      description: "Turbine WT01"
+    2:
+      name: "WT02"
+      description: "Turbine WT02"
+    3:
+      name: "WT03"
+      description: "Turbine WT03"
+    4:
+      name: "WT04"
+      description: "Turbine WT04"
+    5:
+      name: "WT05"
+      description: "Turbine WT05"
+    6:
+      name: "WT06"
+      description: "Turbine WT06"
+    7:
+      name: "WT07"
+      description: "Turbine WT07"
+    8:
+      name: "WT08"
+      description: "Turbine WT08"
+    9:
+      name: "WT09"
+      description: "Turbine WT09"
+    10:
+      name: "WT10"
+      description: "Turbine WT10"
+    11:
+      name: "WT11"
+      description: "Turbine WT11"
+    12:
+      name: "WT12"
+      description: "Turbine WT12"
+    13:
+      name: "WT13"
+      description: "Turbine WT13"
+    14:
+      name: "WT14"
+      description: "Turbine WT14"
+    15:
+      name: "WT15"
+      description: "Turbine WT15"
+    16:
+      name: "WT16"
+      description: "Turbine WT16"
+    17:
+      name: "WT17"
+      description: "Turbine WT17"
+    18:
+      name: "WT18"
+      description: "Turbine WT18"
+    19:
+      name: "WT19"
+      description: "Turbine WT19"
+    20:
+      name: "WT20"
+      description: "Turbine WT20"
+    21:
+      name: "WT21"
+      description: "Turbine WT21"
+    22:
+      name: "WT22"
+      description: "Turbine WT22"
+    23:
+      name: "WT23"
+      description: "Turbine WT23"
+    24:
+      name: "WT24"
+      description: "Turbine WT24"
+    25:
+      name: "WT25"
+      description: "Turbine WT25"
+    26:
+      name: "WT26"
+      description: "Turbine WT26"
+    27:
+      name: "WT27"
+      description: "Turbine WT27"
+  variables:
+    ambient:
+      name: Ambient
+      variables:
+        - Amb_WindSpeed_Avg-SQL-10minAvg
+        - Amb_WindSpeed_Max-SQL-10minAvg
+        - Amb_WindSpeed_Min-SQL-10minAvg
+        - Amb_WindSpeed_Std-SQL-10minAvg
+        - Amb_WindSpeed1_Avg-SQL-10minAvg
+        - Amb_WindSpeed1_Max-SQL-10minAvg
+        - Amb_WindSpeed1_Min-SQL-10minAvg
+        - Amb_WindSpeed1_Std-SQL-10minAvg
+        - Amb_WindSpeed2_Avg-SQL-10minAvg
+        - Amb_WindSpeed2_Max-SQL-10minAvg
+        - Amb_WindSpeed2_Min-SQL-10minAvg
+        - Amb_WindSpeed2_Std-SQL-10minAvg
+        - AmbientTemp_Avg-SQL-10minAvg
+        - AmbientTemperature
+        - WindFaultTimeSub-SQL-10minAvg
+        - WindFaultTimeTotal-SQL-10minAvg
+        - WindInsideRangeTimeSub-SQL-10minAvg
+        - WindInsideRangeTimeTotal-SQL-10minAvg
+        - WindspeedGustMaxSub-SQL-10minAvg
+        - WindspeedGustMaxTotal-SQL-10minAvg
+        - WindspeedMeanSub-SQL-10minAvg
+        - WindspeedMeanTotal-SQL-10minAvg
+    drive_train:
+      name: Drive Train
+      variables:
+        - Gen_RPM_Avg-SQL-10minAvg
+        - Gen_RPM_Max-SQL-10minAvg
+        - Gen_RPM_Min-SQL-10minAvg
+        - Gen_RPM_Std-SQL-10minAvg
+        - Gen1EnergySub-SQL-10minAvg
+        - Gen1EnergyTotal-SQL-10minAvg
+        - GenBerGTemp
+        - GenBerRTemp
+        - GeneratorRPM
+        - HSGenTemp
+        - HydPressure
+        - IMSGenTemp
+        - IMSRotTemp
+        - ProdTimeGen1Sub-SQL-10minAvg
+        - ProdTimeGen1Total-SQL-10minAvg
+    nacelle_yaw:
+      name: Nacelle\Yaw
+      variables:
+        - Nac_Direction_Avg-SQL-10minAvg
+        - Nac_Direction_Max-SQL-10minAvg
+        - Nac_Direction_Min-SQL-10minAvg
+        - Nac_Direction_Std-SQL-10minAvg
+        - NacelleTemp_Avg-SQL-10minAvg
+        - YAW_Position_Avg-SQL-10minAvg
+        - YAW_Position_Max-SQL-10minAvg
+        - YAW_Position_Min-SQL-10minAvg
+        - YAW_Position_Std-SQL-10minAvg
+    power_characteristic:
+      name: Power Characteristic
+      variables:
+        - ActivePower_Avg-SQL-10minAvg
+        - CurrentL1_Avg-SQL-10minAvg
+        - CurrentL2_Avg-SQL-10minAvg
+        - CurrentL3_Avg-SQL-10minAvg
+        - PowerFactor-SQL-10minAvg
+        - ReActivePower_Avg-SQL-10minAvg
+        - VoltageL1_Avg-SQL-10minAvg
+        - VoltageL2_Avg-SQL-10minAvg
+        - VoltageL3_Avg-SQL-10minAvg
+    rotor_hub:
+      name: Rotor Hub
+      variables:
+        - Blds_BladeA_PitchAngle_Avg-SQL-10minAvg
+        - Blds_BladeA_PitchAngle_Max-SQL-10minAvg
+        - Blds_BladeA_PitchAngle_Min-SQL-10minAvg
+        - Blds_BladeA_PitchAngle_Std-SQL-10minAvg
+        - Blds_BladeA_PitchAngleRef_Avg-SQL-10minAvg
+        - Blds_BladeA_PitchAngleRef_Max-SQL-10minAvg
+        - Blds_BladeA_PitchAngleRef_Min-SQL-10minAvg
+        - Blds_BladeA_PitchAngleRef_Std-SQL-10minAvg
+        - Blds_BladeB_PitchAngle_Avg-SQL-10minAvg
+        - Blds_BladeB_PitchAngle_Max-SQL-10minAvg
+        - Blds_BladeB_PitchAngle_Min-SQL-10minAvg
+        - Blds_BladeB_PitchAngle_Std-SQL-10minAvg
+        - Blds_BladeB_PitchAngleRef_Avg-SQL-10minAvg
+        - Blds_BladeB_PitchAngleRef_Max-SQL-10minAvg
+        - Blds_BladeB_PitchAngleRef_Min-SQL-10minAvg
+        - Blds_BladeB_PitchAngleRef_Std-SQL-10minAvg
+        - Blds_BladeC_PitchAngle_Avg-SQL-10minAvg
+        - Blds_BladeC_PitchAngle_Max-SQL-10minAvg
+        - Blds_BladeC_PitchAngle_Min-SQL-10minAvg
+        - Blds_BladeC_PitchAngle_Std-SQL-10minAvg
+        - Blds_BladeC_PitchAngleRef_Avg-SQL-10minAvg
+        - Blds_BladeC_PitchAngleRef_Max-SQL-10minAvg
+        - Blds_BladeC_PitchAngleRef_Min-SQL-10minAvg
+        - Blds_BladeC_PitchAngleRef_Std-SQL-10minAvg
+        - Rtr_RPM_Avg-SQL-10minAvg
+        - Rtr_RPM_Max-SQL-10minAvg
+        - Rtr_RPM_Min-SQL-10minAvg
+        - Rtr_RPM_Std-SQL-10minAvg
+    other:
+      name: Other
+      variables:
+        - AvailabilitySub-SQL-10minAvg
+        - AvailabilityTotal-SQL-10minAvg
+        - DisconnectorOpen
+        - ErrorCode
+        - EventCode
+        - EventParam
+        - ExternalErrorTimeSub-SQL-10minAvg
+        - ExternalErrorTimeTotal-SQL-10minAvg
+        - Frequency
+        - Frequency_Avg-SQL-10minAvg
+        - GasPressure
+        - Grd_Prod_PwrRef-SQL-10minAvg
+        - GridFault2TimeSub-SQL-10minAvg
+        - GridFault2TimeTotal-SQL-10minAvg
+        - GridFaultTimeSub-SQL-10minAvg
+        - GridFaultTimeTotal-SQL-10minAvg
+        - MVBClose
+        - MVBError
+        - MVBOpen
+        - MVBSF6P2
+        - MVBSF6Pressure
+        - MVBTrip
+        - OilLevel
+        - StandardAvailabilitySub-SQL-10minAvg
+        - StandardAvailabilityTotal-SQL-10minAvg
+        - TrafoRoomTemp
+        - TrafoTemp
+        - TurbineErrorTimeSub-SQL-10minAvg
+        - TurbineErrorTimeTotal-SQL-10minAvg
+        - TurbineOkTimeSub-SQL-10minAvg
+        - TurbineOkTimeTotal-SQL-10minAvg
+        - TurbineOtherTimeSub-SQL-10minAvg
+        - TurbineOtherTimeTotal-SQL-10minAvg
+        - TurbineReadyTimeSub-SQL-10minAvg
+        - TurbineReadyTimeTotal-SQL-10minAvg
+        - TurbineReleased
+        - TurbineStandStillTimeSub-SQL-10minAvg
+        - TurbineStandStillTimeTotal-SQL-10minAvg
+        - WpsStatus
+        - WTOperationState
+    tower:
+      name: Tower
+      variables:
+        - TowerFreq_Avg-SQL-10minAvg
+        - TowerFreq_Max-SQL-10minAvg
+        - TowerFreq_Min-SQL-10minAvg
+        - TowerFreq_Std-SQL-10minAvg
+        - TowerHumidity_Avg-SQL-10minAvg
+    turbine_performances:
+      name: Turbine Performances
+      variables:
+        - ActiveEnergyExport
+        - ActiveEnergyExportSub
+        - ActiveEnergyImport
+        - ActiveEnergyInmportSub
+        - KPIS_10MIN-PPOWER
+        - KPIS_10MIN-PPOWERWHENAVAIL
+        - KPIS_10MIN-RECRATEACTIVEPOWER
+        - KPIS_10MIN-RECRATEWINDSPEED
+        - KPIS_10MIN-SOKTIME
+        - ReactiveEnergyExport
+        - ReactiveEnergyExportSub
+        - ReActiveEnergyImport
+        - ReActiveEnergyInportSub

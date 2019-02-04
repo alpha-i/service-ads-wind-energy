@@ -1,0 +1,18 @@
+FROM python:3.6.6-jessie
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y postgresql-server-dev-9.4 postgresql-contrib
+
+RUN mkdir /home; exit 0
+
+WORKDIR /home
+ADD ./requirements.txt /home/
+ADD ./dev-requirements.txt /home/
+RUN pip install -r dev-requirements.txt
+
+ENV APP_CONFIG=environments/docker.env
+ADD . /home/
+
+ENV FLASK_APP=application.py
+ENTRYPOINT python application.py

@@ -1,0 +1,130 @@
+{% extends "layout/main.html" %}
+{% import 'macros/macros.html' as general_macros %}
+
+{% block page_title %}Maintenance log{% endblock %}
+
+{% block page_header %}
+    <h1>
+        Maintenance log
+        <small></small>
+    </h1>
+{% endblock %}
+{% block breadcrumb_items %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <h3 class="box-header with-border">Add Maintenance</h3>
+                <div class="box-body">
+                    <form method="post" enctype="multipart/form-data" class="form">
+                        <div class="row">
+                            <div class="form-group col-lg-3">
+                                <label for="start_date">Start date</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" name="start_date" class="form-control datetime-picker" required="required"
+                                           id="start_date"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-3">
+                                <label for="end_date">End date</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="text" name="end_date" class="form-control datetime-picker" required="required"
+                                           id="end_date"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-3">
+                                <label for="turbine">Turbine</label>
+                                <select name="turbine" id="turbine" class="form-control">
+                                    {% for _, turbine in turbines.items() %}
+                                        <option value="{{ turbine.id }}">{{ turbine.name }}</option>
+
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group col-lg-3">
+                                <label for="component">Component</label>
+                                <input type="text" placeholder="Component..." class="form-control" required="required"
+                                       name="component" id="component"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="reason">Reason</label>
+                                <textarea type="text" placeholder="Reason for the scheduled maintenance"
+                                          class="form-control" required="required"
+                                          name="reason" id="reason" style="min-height: 150px; resize: none;"></textarea>
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label for="note">Notes</label>
+                                <textarea type="text" placeholder="Intervention notes"
+                                          class="form-control" required="required" name="note" id="note" style="min-height: 150px; resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <input class="btn btn-primary" type="submit" value="Add maintenance window" id="submit" name="submit">
+                            </div>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if maintenance_events %}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-primary">
+                    <h3 class="box-header with-border">Scheduled maintenance</h3>
+                    <div class="box-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <td>Log time</td>
+                                <td>Maintenance starts</td>
+                                <td>Maintenance ends</td>
+                                <td>Turbine</td>
+                                <td>Component</td>
+                                <td>Reason</td>
+                                <td>Note</td>
+                                <td></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for maintenance_event in maintenance_events %}
+                                <tr>
+                                    <td>{{ maintenance_event.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>{{ maintenance_event.start_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>{{ maintenance_event.end_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>
+                                        {# TODO: Winfdarm object #}
+                                        <a href="{{ url_for('windfarm.turbine', turbine_id=maintenance_event.turbine) }}">{{ maintenance_event.turbine }}</a>
+                                    </td>
+                                    <td>{{ maintenance_event.component }}</td>
+                                    <td>{{ maintenance_event.reason }}</td>
+                                    <td>{{ maintenance_event.note }}</td>
+                                    <td>
+                                        <a href={{ url_for('maintenance.delete', maintenance_id=maintenance_event.id) }}><i
+                                                class="fa fa-trash"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

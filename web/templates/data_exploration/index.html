@@ -1,0 +1,31 @@
+{% extends "layout/main.html" %}
+{% import 'macros/macros.html' as general_macros %}
+
+{% block page_title %}Data exploration{% endblock %}
+
+{% block page_header %}
+    <h1>
+        Data exploration
+        <small></small>
+    </h1>
+{% endblock %}
+{% block breadcrumb_items %}
+    {{ super() }} > Data exploration
+{% endblock %}
+
+{% block content %}
+{#
+    Now, this assumes that the authentication will be provided to the user.
+    We can also enable the ANONYMOUS mode, and set the default org as the demo one
+    This WON'T scale, since we'll need to support multiple users anyway.
+
+    The only viable solution is an authentication proxy.
+    But still, even the proxy authentication seems to work by converting
+    the basic auth into a header, and we're using a custom auth for the
+    flask application... 😪
+
+    The best quick & dirty way for a one-user scenario would be to enable
+    anonymous mode and hardcode the org id.
+#}
+    <iframe src="https://grafana.lab.alpha-i.co:3000/d/3vuCaGpmk/wind-farm-dashboard?orgId=1&from=1438469291338&to=1456364091338&kiosk" frameborder="0" width="100%" height="1800px" style="overflow: auto;"></iframe>
+{% endblock %}

@@ -1,0 +1,17 @@
+FROM python:3.6.6-jessie
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y postgresql-server-dev-9.4 postgresql-contrib
+
+RUN mkdir /home; exit 0
+
+WORKDIR /home
+ADD ./requirements.txt /home/
+ADD ./dev-requirements.txt /home/
+
+RUN pip install -r dev-requirements.txt
+
+ENV APP_CONFIG=/home/environments/docker.env
+ADD . /home/
+ENTRYPOINT celery -A celery_worker.celery worker -E --loglevel=debug --concurrency=1 --max-tasks-per-child=1 --without-gossip --without-mingle --without-heartbeat
